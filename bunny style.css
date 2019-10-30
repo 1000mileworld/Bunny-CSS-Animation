@@ -1,0 +1,109 @@
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+.container {
+  z-index: 1;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 35rem;
+  
+  background-image: url(https://1000mileworld.com/wp-content/uploads/2019/10/countryside.jpg);
+  background-blend-mode: soft-light;
+  background-size: cover;
+  background-position: center center;
+  padding: 2rem;
+}
+
+/*Animating bunny to move across screen*/
+.bunny-container {
+  position: absolute;
+  top: 20%;
+  left: -20%;
+  transform: scale(0.9) translate(-50%, -50%);
+  will-change: transform;
+  
+          animation-name: jump-right;
+          animation-timing-function: linear;
+          animation-iteration-count: infinite;
+       
+}
+
+.bunny-container-one {
+          animation-duration: 10s;
+          animation-delay: 0s;
+}
+
+.bunny-container-two {
+          animation-duration: 20s;
+          animation-delay: 3s;
+}
+
+.bunny-container-three {
+          animation-duration: 15s;
+          animation-delay: 5s;
+}
+
+.bunny-container-four {
+          animation-duration: 12s;
+          animation-delay: 8s;
+}
+
+@keyframes jump-right {
+  0% {transform: translateX(-10vw);}
+  10% {transform: translateY(0vh) translateX(10vw);} /*vh and vw are height and widths relative to viewport, 2vh = 2% of viewport height*/
+  20% {transform: translateY(0vh) translateX(30vw);} /*percentages are key-frame selectors, valid from 0-100% of animation duration*/
+  30% {transform: translateY(0vh) translateX(50vw);}
+  40% {transform: translateY(0vh) translateX(70vw);}
+  50% {transform: translateY(0vh) translateX(90vw);}
+  60% {transform: translateY(0vh) translateX(120vw);}
+  100% {transform: translateY(0vh) translateX(120vw);}
+}
+
+
+
+/*Animating bunny's jumping motion frame by frame*/
+.bunny {
+  background-image: url(https://1000mileworld.com/wp-content/uploads/2019/10/bunnyOnly2.png);
+  background-size: auto 100%; /*sets  width to original and height to fill div container for background image?*/
+  width: 180px; /*equates to frame size, aka available viewing area of one frame*/
+  height: 400px;
+
+  
+  will-change: background-position;
+          animation-name: jump-cycle;
+          animation-timing-function: steps(7);
+          animation-iteration-count: infinite; 
+
+}
+
+.bunny-one{
+          animation-duration: 0.5s; /*duration and delay can be modified for each bunny*/
+          animation-delay: -0.2s; /*negative value means animation has already been playing for the set amount of time*/
+}
+
+.bunny-two{
+          animation-duration: 0.8s;
+          animation-delay: -0.7s; 
+}
+
+.bunny-three{
+          animation-duration: 0.63s;
+          animation-delay: -0.4s; 
+}
+
+.bunny-four{
+          animation-duration: 0.72s;
+          animation-delay: 0s; 
+}
+
+@keyframes jump-cycle{
+   from { background-position: 0px; }
+     to { background-position: -1250px; } /*end position = steps x width*/
+}
